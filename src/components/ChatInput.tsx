@@ -26,21 +26,22 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
   };
 
   return (
-    <div className="flex gap-2 p-4 border-t">
+    <div className="flex gap-3 p-4">
       <Textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Type your medical query here..."
-        className="resize-none"
+        placeholder="Type your message here..."
+        className="resize-none bg-secondary/50 border-white/10 focus:ring-primary"
         disabled={disabled}
       />
       <Button
         onClick={handleSend}
         disabled={disabled || !message.trim()}
         size="icon"
+        className="bg-primary hover:bg-primary/80 transition-colors"
       >
-        <SendHorizontal className="h-4 w-4" />
+        <SendHorizontal className="h-5 w-5" />
       </Button>
     </div>
   );

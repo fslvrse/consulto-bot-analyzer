@@ -3,7 +3,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { TypingIndicator } from "@/components/TypingIndicator";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, Sparkles } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface Message {
@@ -77,38 +77,57 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-4xl mx-auto">
-      <header className="flex items-center justify-between p-4 border-b">
-        <h1 className="text-2xl font-bold text-primary">GoConsultant</h1>
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleClear}
-          disabled={messages.length === 0}
-        >
-          <Trash2 className="h-4 w-4" />
-        </Button>
-      </header>
-
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.length === 0 && (
-          <div className="text-center text-muted-foreground mt-8">
-            👋 Hi! I'm GoConsultant. Feel free to start a conversation or ask any questions.
+    <>
+      <div className="starfield" />
+      <div className="flex flex-col h-screen max-w-5xl mx-auto px-4 py-2">
+        <header className="flex items-center justify-between p-6 bg-secondary/50 backdrop-blur-lg rounded-2xl mb-4 border border-white/10">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-8 w-8 text-primary animate-pulse" />
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              GoConsultant
+            </h1>
           </div>
-        )}
-        {messages.map((message, index) => (
-          <ChatMessage
-            key={index}
-            role={message.role}
-            content={message.content}
-          />
-        ))}
-        {isLoading && <TypingIndicator />}
-        <div ref={messagesEndRef} />
-      </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleClear}
+            disabled={messages.length === 0}
+            className="hover:bg-white/10"
+          >
+            <Trash2 className="h-5 w-5" />
+          </Button>
+        </header>
 
-      <ChatInput onSend={handleSend} disabled={isLoading} />
-    </div>
+        <div className="flex-1 overflow-y-auto rounded-2xl bg-secondary/30 backdrop-blur-lg border border-white/10 p-6 space-y-6">
+          {messages.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full space-y-4 text-center text-muted-foreground">
+              <Sparkles className="h-12 w-12 text-primary animate-pulse" />
+              <div className="max-w-md">
+                <p className="text-xl font-semibold mb-2">
+                  👋 Hi! I'm GoConsultant
+                </p>
+                <p className="text-sm opacity-70">
+                  Feel free to start a conversation or ask any questions.
+                </p>
+              </div>
+            </div>
+          )}
+          {messages.map((message, index) => (
+            <ChatMessage
+              key={index}
+              role={message.role}
+              content={message.content}
+            />
+          ))}
+          {isLoading && <TypingIndicator />}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="mt-4 bg-secondary/50 backdrop-blur-lg rounded-2xl border border-white/10">
+          <ChatInput onSend={handleSend} disabled={isLoading} />
+        </div>
+      </div>
+    </>
   );
 };
 

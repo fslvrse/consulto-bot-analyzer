@@ -9,10 +9,10 @@ export const ChatMessage = ({ content, role }: ChatMessageProps) => {
   return (
     <div
       className={cn(
-        "px-4 py-3 rounded-lg max-w-[80%] message-fade-in",
+        "px-6 py-4 rounded-2xl max-w-[80%] message-fade-in chat-message",
         role === "assistant"
-          ? "bg-primary text-primary-foreground ml-2"
-          : "bg-secondary text-secondary-foreground ml-auto"
+          ? "bg-primary/20 text-foreground ml-2 border-l-4 border-l-primary"
+          : "bg-secondary/50 text-foreground ml-auto border-r-4 border-r-primary"
       )}
     >
       {content}
