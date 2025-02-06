@@ -37,15 +37,15 @@ const Index = () => {
 
       // Handle greetings and casual conversation
       if (lowerMessage.includes("hello") || lowerMessage.includes("hi")) {
-        response = "Hello! I'm your medical AI assistant. How can I help you today?";
+        response = "Hi! I'm GoConsultant. How can I help you today?";
       } else if (lowerMessage.includes("how are you")) {
-        response = "I'm functioning well and ready to assist you with any medical queries you have. How are you doing?";
+        response = "I'm functioning well and ready to assist you. How are you doing?";
       } else if (lowerMessage.includes("weather")) {
         response = "While I can't check the actual weather, I can discuss how weather conditions might affect certain medical conditions. Would you like to know more about any specific weather-related health concerns?";
       } else if (lowerMessage.includes("thank")) {
-        response = "You're welcome! Feel free to ask me any other medical questions you might have.";
+        response = "You're welcome! Feel free to ask me any other questions you might have.";
       } else if (lowerMessage.includes("bye") || lowerMessage.includes("goodbye")) {
-        response = "Goodbye! Take care and don't hesitate to return if you have more medical questions.";
+        response = "Goodbye! Take care and don't hesitate to return if you have more questions.";
       } else {
         // Default response for medical queries
         response = "I understand you're asking about a medical topic. Let me help you with that. What specific information would you like to know?";
@@ -93,7 +93,7 @@ const Index = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.length === 0 && (
           <div className="text-center text-muted-foreground mt-8">
-            👋 Hello! I'm your medical AI assistant. Feel free to start a conversation or ask any medical questions.
+            👋 Hi! I'm GoConsultant. Feel free to start a conversation or ask any questions.
           </div>
         )}
         {messages.map((message, index) => (
