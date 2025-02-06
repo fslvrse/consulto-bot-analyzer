@@ -31,7 +31,6 @@ const Index = () => {
     setIsLoading(true);
 
     try {
-      // Simulate API call with more natural responses
       let response = "";
       const lowerMessage = message.toLowerCase();
 
@@ -47,8 +46,20 @@ const Index = () => {
       } else if (lowerMessage.includes("bye") || lowerMessage.includes("goodbye")) {
         response = "Goodbye! Take care and don't hesitate to return if you have more questions.";
       } else {
-        // Default response for medical queries
-        response = "I understand you're asking about a medical topic. Let me help you with that. What specific information would you like to know?";
+        // Enhanced medical responses based on keywords
+        if (lowerMessage.includes("headache")) {
+          response = "Headaches can have various causes including stress, dehydration, or tension. Some common remedies include: \n\n• Staying hydrated\n• Getting adequate rest\n• Over-the-counter pain relievers\n• Reducing screen time\n\nIf headaches are severe or persistent, please consult a healthcare provider.";
+        } else if (lowerMessage.includes("cold") || lowerMessage.includes("flu")) {
+          response = "Common cold and flu symptoms can be managed by:\n\n• Rest\n• Staying hydrated\n• Over-the-counter medications\n• Warm liquids\n\nIf symptoms are severe or persist, please seek medical attention.";
+        } else if (lowerMessage.includes("fever")) {
+          response = "A fever might indicate your body is fighting an infection. Tips for managing fever:\n\n• Rest\n• Stay hydrated\n• Monitor temperature\n• Take fever reducers if needed\n\nSeek immediate medical attention if fever is very high (103°F/39.4°C or higher) or persists.";
+        } else if (lowerMessage.includes("diet") || lowerMessage.includes("nutrition")) {
+          response = "A balanced diet is crucial for good health. Key principles include:\n\n• Variety of fruits and vegetables\n• Whole grains\n• Lean proteins\n• Healthy fats\n• Adequate hydration\n\nFor personalized dietary advice, consult a registered dietitian.";
+        } else if (lowerMessage.includes("stress") || lowerMessage.includes("anxiety")) {
+          response = "Stress and anxiety management techniques include:\n\n• Deep breathing exercises\n• Regular physical activity\n• Adequate sleep\n• Mindfulness meditation\n• Professional counseling\n\nIf anxiety significantly impacts your daily life, please consult a mental health professional.";
+        } else {
+          response = "I understand you're asking about a health topic. To provide accurate information, could you please be more specific about your concern? For example, are you experiencing any particular symptoms or looking for information about a specific condition?";
+        }
       }
       
       setTimeout(() => {
